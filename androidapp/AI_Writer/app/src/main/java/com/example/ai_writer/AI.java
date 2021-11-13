@@ -13,6 +13,7 @@ public class AI {
 
     public static String generateResponse(String sequence)
     {
+        PyObject setuptools_rust = getPythonInstance().getModule("setuptools_rust");
         PyObject torch = getPythonInstance().getModule("torch");
         PyObject GPT2LMHeadModel = getPythonInstance().getModule("transformers.GPT2LMHeadModel");
         PyObject GPT2Tokenizer = getPythonInstance().getModule("transformers.GPT2Tokenizer");
