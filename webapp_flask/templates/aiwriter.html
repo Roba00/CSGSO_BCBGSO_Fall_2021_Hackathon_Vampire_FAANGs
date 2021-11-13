@@ -1,0 +1,22 @@
+<!doctype html>
+<title>Hello from Flask</title>
+{% if text %}
+  <h1>{{ text }}!</h1>
+{% endif %}
+<input type="text" name="prompt" id="prompt">
+<button onclick="addText()">Submit</button>
+
+<script type="text/javascript">
+  function addText() {
+    var prompt = document.getElementById("prompt").value;
+    var finalText = prompt;
+    {% if text %}
+      finalText = {{text}} + prompt;
+    {% endif %}
+    window.location.href = "/" + finalText;
+  }
+</script>
+<!-- <form action="/">
+  <input type="text" name="text">
+  <button type="submit">Submit</button>
+</form> -->
