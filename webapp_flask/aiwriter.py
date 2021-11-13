@@ -14,7 +14,7 @@ def hello_world(text=None):
 
         sequence = unquote(text)
         inputs = tokenizer.encode(sequence, return_tensors='pt')
-        outputs = model.generate(inputs, max_length=350, do_sample=True)
+        outputs = model.generate(inputs, max_length=300, do_sample=True)
         text = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
     return render_template("aiwriter.html", text=text)
