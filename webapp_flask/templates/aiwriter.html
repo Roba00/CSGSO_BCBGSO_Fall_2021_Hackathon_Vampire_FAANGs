@@ -1,11 +1,119 @@
 <!doctype html>
 <title>Hello from Flask</title>
+<style type="text/css">
+  html {
+  height: 100%;
+}
+body {
+  margin:0;
+  padding:0;
+  font-family: sans-serif;
+  background: linear-gradient(#141e30, #243b55);
+}
+
+h3 {
+  color: #fff;
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.generate-box {
+  margin-left: 600px;
+  margin-top: 25px;
+  height: 600px;
+  width: 600px;
+  background: rgba(0,0,0,.5);
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+}
+
+.prompt-box {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+/*  margin-bottom: 100px;
+  margin-left: 300px;
+  margin-top: 300px;
+*/  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+}
+
+.prompt-box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.prompt-box .text-box {
+  position: relative;
+}
+
+.prompt-box .text-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+.prompt-box .text-box label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.prompt-box .text-box input:focus ~ label,
+.prompt-box .text-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #03e9f4;
+  font-size: 12px;
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+}
+</style>
+<div class="prompt-box">
+  <h2>Enter Prompt</h2>
+  <div class="text-box">
+    <input type="text" name="prompt" id="prompt">
+    <label>Prompt</label>
+  </div>
+  <button class="button" onclick="addText()">Generate Text</button>
+  <button class="button" onclick="reset()">Reset</button>
+</div>
 {% if text %}
-  <h2>{{ text }}!</h2>
+  <div class="generate-box">
+    <h3>{{ text }}!</h3>
+  </div>
 {% endif %}
-<label for="prompt">Enter Prompt: </label>
-<input type="text" name="prompt" id="prompt">
-<button onclick="addText()">Submit</button>
+
 
 <script type="text/javascript">
   function addText() {
@@ -15,5 +123,9 @@
       finalText = '{{text.replace("\n", "")}}' + " " + prompt;
     {% endif %}
     window.location.href = "/" + finalText;
+  }
+
+  function reset() {
+    window.location.href = "/";
   }
 </script>
