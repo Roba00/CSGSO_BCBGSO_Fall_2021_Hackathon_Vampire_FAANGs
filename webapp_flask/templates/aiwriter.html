@@ -1,0 +1,19 @@
+<!doctype html>
+<title>Hello from Flask</title>
+{% if text %}
+  <h2>{{ text }}!</h2>
+{% endif %}
+<label for="prompt">Enter Prompt: </label>
+<input type="text" name="prompt" id="prompt">
+<button onclick="addText()">Submit</button>
+
+<script type="text/javascript">
+  function addText() {
+    var prompt = document.getElementById("prompt").value;
+    var finalText = prompt;
+    {% if text %}
+      finalText = '{{text.replace("\n", "")}}' + " " + prompt;
+    {% endif %}
+    window.location.href = "/" + finalText;
+  }
+</script>
