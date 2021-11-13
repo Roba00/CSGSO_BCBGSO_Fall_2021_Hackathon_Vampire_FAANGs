@@ -11,12 +11,8 @@
     var prompt = document.getElementById("prompt").value;
     var finalText = prompt;
     {% if text %}
-      finalText = {{text}} + prompt;
+      finalText = '{{text.replace("\n", "")}}' + " " + prompt;
     {% endif %}
     window.location.href = "/" + finalText;
   }
 </script>
-<!-- <form action="/">
-  <input type="text" name="text">
-  <button type="submit">Submit</button>
-</form> -->
