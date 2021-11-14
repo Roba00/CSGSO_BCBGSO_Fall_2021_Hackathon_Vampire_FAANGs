@@ -17,3 +17,6 @@ export FLASK_APP=aiwriter <br>
 flask run <br>
 
 Open http://127.0.0.1:5000/
+
+## Presentation
+https://docs.google.com/presentation/d/1emkij1G_xTqJrTIFCHZW1r24YZlv8Ouk6TEfmoYmjdc/edit?usp=sharing
